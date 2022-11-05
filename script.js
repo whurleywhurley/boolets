@@ -61,14 +61,14 @@ function checkUnicode() {
         }
         else { }
     }
-    // for (n = 0; n < unicodeHyphen.length; n++) {
-    //     console.log("Checking for: " + unicodeHyphen[n]);
-    //     if (brokenText.search(unicodeHyphen[n]) != -1) {
-    //         console.log("Found the following unicode: " + unicodeHyphen[n]);
-    //         unicodeCheck = true;
-    //     }
-    //     else { }
-    // }
+    for (n = 0; n < unicodeHyphen.length; n++) {
+        console.log("Checking for: " + unicodeHyphen[n]);
+        if (brokenText.search(unicodeHyphen[n]) != -1) {
+            console.log("Found the following unicode: " + unicodeHyphen[n]);
+            unicodeCheck = true;
+        }
+        else { }
+    }
     if (unicodeCheck) {
         $warning.html("Your input contains unicode characters that are invalid for use.<br>I have attempted to remove the offending characters for you.<br>Please copy the bullets in yellow below and try again using the copied input.");
         document.getElementById("warning-area").classList.add("warning");
@@ -84,10 +84,10 @@ function cleanUnicode() {
         const regex = new RegExp(unicodeSpace[n], 'g');
         brokenText = brokenText.replace(regex, ' ');
     }
-    // for (n = 0; n < unicodeHyphen.length; n++) {
-    //     const regex = new RegExp(unicodeHyphen[n], 'g');
-    //     brokenText = brokenText.replace(regex, '-');
-    // }
+    for (n = 0; n < unicodeHyphen.length; n++) {
+        const regex = new RegExp(unicodeHyphen[n], 'g');
+        brokenText = brokenText.replace(regex, '-');
+    }
     arrayLines = brokenText.split('\n');
     for (i = 0; i < arrayLines.length; i++) {
         brokenText = brokenText.replace(arrayLines[i], '<li>$&</li>');
