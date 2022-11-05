@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+    Next steps:
+    Use regex to find words at each the action, result, impact
+    Action = ((?:-\s)\w+)
+    Result = ((?:\;\s)\w+)
+    Impact = ((?:\-\-)\w+)
+
+    All together now?
+    ((?:-\s)\w+)|((?:\;\s)\w+)|((?:\-\-)\w+)
+    Add word to array
+    If 2 or more, highlight yellow
+    Can use <data>WORD</data> as flags
+
+    Need to handle empty lines better; they cause a weird bug at the moment
+ -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="backdrop">
+            <div class="highlights">
+
+            </div>
+        </div>
+        <textarea id="data">Input boolets here.</textarea>
+    </div>
+    <p class="instructions">
+
+    </p>
+    <div id="warning-area" class="">
+        &hearts;
+    </div>
+    <div class="clean">
+        With Love
+    </div>
+
+</body>
+
+</html>

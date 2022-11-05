@@ -1,0 +1,127 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 85%;
+}
+
+body {
+    margin: 30px;
+    background-color: #f0f0f0;
+    font-family: 'Roboto Mono', monospace;
+    color: #444;
+}
+
+.container,
+.backdrop,
+textarea {
+    width: 80em;
+    height: 20em;
+}
+
+.highlights,
+textarea {
+    padding: 1em;
+    font: 1.0em/1.2em 'Roboto Mono', monospace;
+    letter-spacing: 1px;
+}
+
+.container {
+    display: block;
+    margin: 0 auto;
+    transform: translateZ(0);
+    -webkit-text-size-adjust: none;
+}
+
+.backdrop {
+    position: absolute;
+    z-index: 1;
+    border: 2px solid #685972;
+    background-color: #fff;
+    overflow: auto;
+    pointer-events: none;
+    transition: transform 1s;
+}
+
+.highlights {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: transparent;
+}
+
+.clean * {
+    background-color: yellow;
+    color: #444;
+}
+
+.warning {
+    background-color: red;
+    padding: 1em;
+    font-size: 1.4em;
+}
+
+li {
+    list-style: none;
+}
+
+textarea {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    margin: 0;
+    border: 2px solid #74637f;
+    border-radius: 0;
+    color: #444;
+    background-color: transparent;
+    overflow: auto;
+    resize: none;
+    transition: transform 1s;
+}
+
+mark {
+    border-radius: 3px;
+    color: transparent;
+    background-color: #b1d5e5;
+}
+
+span {
+    border-radius: 3px;
+    color: transparent;
+    background-color: #e5b1b1;
+}
+
+object {
+    border-radius: 3px;
+    color: transparent;
+    background-color: #b1e5b8;
+}
+
+data {
+    border-radius: 3px;
+    color: transparent;
+    background-color: #e2e5b1;
+}
+
+button {
+    display: block;
+    width: 30em;
+    margin: 3em auto 0;
+    padding: 1em;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    background-color: #74637f;
+    font: 18px 'Opens Sans', sans-serif;
+    letter-spacing: 1px;
+    appearance: none;
+    cursor: pointer;
+}
+
+textarea:focus,
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #c6aada;
+}
