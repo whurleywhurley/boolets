@@ -2,33 +2,47 @@
 <html lang="en">
 <!-- 
     Next steps:
-    Use regex to find words at each the action, result, impact
-    Action = ((?:-\s)\w+)
-    Result = ((?:\;\s)\w+)
-    Impact = ((?:\-\-)\w+)
-
-    All together now?
-    ((?:-\s)(?<action>\w+))|((?:\;\s)(?<result>\w+))|((?:\-\-)(?<impact>\w+))
-    This means I should capture the group names action, result, impact for my words
-    Add word to array
-    If 2 or more, highlight yellow
-    Can use <data>WORD</data> as flags
+    Create functionality for abbreviations
+    Create functionality for thesaurus
  -->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-78FRGK6EE1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-78FRGK6EE1');
+    </script>
     <script defer src="script.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <title>Document</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'none'">
+    <link rel="icon" type="image/png" href="icon.png" />
+    <title>Boolets &mdash; Mo Betta</title>
 </head>
 
 <body>
+    <header class="header">
+        <h1 class="title">
+            Boolets
+        </h1>
+        <p class="slug"><br>
+            Making bullets suck a little bit less
+        </p>
+        <a href="https://github.com/whurleywhurley" class="about">
+            By William Hurley
+        </a>
+    </header>
     <div class="container">
         <div class="backdrop">
             <div class="highlights">
@@ -37,24 +51,37 @@
         </div>
         <textarea id="data">Input boolets here.</textarea>
     </div>
-    <p class="instructions">
-
-    </p>
-    <div id="warning-area" class="">
-        &hearts;
-    </div>
-    <div class="clean">
-    </div>
+    <br>
     <div class="instructions">
-        <p></p>
+
+        <div id="warning-area" class="">
+            &hearts;
+        </div>
+        <div class="clean">
+        </div>
         <h2>Instructions:</h2>
-        <li>Place your bullets in the text box above</li>
-        <li>If your bullets are longer than 115 characters, they will highlight in red<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
-        <li>If your bullets are shorter than 112 characters, they will highlight in green<object>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</object></li>
-        <li>Bullets between 112 and 115 characters are left alone</li>
-        <li>Items highlighted in yellow<data>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</data> are where I think there might be duplicate verbs</li>
-        <li>Acronyms appear in blue<mark>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</mark></li>
-        <li>If you have entered unicode characters (thin spaces) it will warn you and attempt to fix this for you</li>
+        <ul>
+            <li>Place your bullets in the text box above</li>
+            <li>If your bullets are longer than 115 characters, they will highlight in
+                red <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+            <li>If your bullets are shorter than 112 characters, they will highlight in
+                green <object>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</object></li>
+            <li>Bullets between 112 and 115 characters are left alone</li>
+            <li>Items highlighted in yellow <data>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</data> are where I think
+                there
+                might
+                be duplicate verbs</li>
+            <li>Acronyms appear in blue <mark>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</mark></li>
+            <li>If you have entered unicode characters (thin spaces) it will warn you and attempt to fix this for
+                you
+            </li>
+        </ul>
+        <br>
+        <h3>Roadmap: (hopefully)</h3>
+        <ul>
+            <li>Abbreviations</li>
+            <li>Thesaurus</li>
+        </ul>
     </div>
 </body>
 
