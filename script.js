@@ -25,9 +25,12 @@ function applyHighlights(text) {
     arrayLines = text.split('\n')
     console.log("Split into: " + arrayLines);
     for (i = 0; i < arrayLines.length; i++) {
-        // console.log(arrayLines[i]);
+         console.log(arrayLines[i]);
         var len = arrayLines[i].length;
-        if (len > 114) {
+        if (arrayLines[i] == '') {
+            console.log("Found blank line")
+        }
+        else if (len > 114) {
             console.log(arrayLines[i] + " is too long, it is this many characters: " + arrayLines[i].length);
             text = text.replace(arrayLines[i], '<span>$&</span>');
         }
