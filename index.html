@@ -8,7 +8,8 @@
     Impact = ((?:\-\-)\w+)
 
     All together now?
-    ((?:-\s)\w+)|((?:\;\s)\w+)|((?:\-\-)\w+)
+    ((?:-\s)(?<action>\w+))|((?:\;\s)(?<result>\w+))|((?:\-\-)(?<impact>\w+))
+    This means I should capture the group names action, result, impact for my words
     Add word to array
     If 2 or more, highlight yellow
     Can use <data>WORD</data> as flags
@@ -43,9 +44,18 @@
         &hearts;
     </div>
     <div class="clean">
-        With Love
     </div>
-
+    <div class="instructions">
+        <p></p>
+        <h2>Instructions:</h2>
+        <li>Place your bullets in the text box above</li>
+        <li>If your bullets are longer than 115 characters, they will highlight in red<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+        <li>If your bullets are shorter than 112 characters, they will highlight in green<object>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</object></li>
+        <li>Bullets between 112 and 115 characters are left alone</li>
+        <li>Items highlighted in yellow<data>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</data> are where I think there might be duplicate verbs</li>
+        <li>Acronyms appear in blue<mark>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</mark></li>
+        <li>If you have entered unicode characters (thin spaces) it will warn you and attempt to fix this for you</li>
+    </div>
 </body>
 
 </html>

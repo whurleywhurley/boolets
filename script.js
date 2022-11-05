@@ -17,6 +17,36 @@ function warningReset() {
     document.getElementById("warning-area").classList.remove("warning");
     $warning.html("&hearts;");
     $clean.html("With Love");
+}
+
+function repeatingWords(inputText) {
+    // Working here
+    // var inputText = $textarea.val();
+    let dateRegexp = /-\s(?<first>\w+)|\;\s(?<second>\w+)|\-\-(?<third>\w+)/gi;
+    let results = inputText.matchAll(dateRegexp);
+    results = Array.from(results)
+    verb = [];
+    console.log("Result groups: " + results);
+    for (i = 0; i < results.length; i++) {
+        let action = results[i][1];
+        if (typeof action !== "undefined") {
+            console.log("Found the following verb: " + action.toLowerCase());
+            verb.push(action.toLowerCase());
+        }
+        let result = results[i][2];
+        if (typeof result !== "undefined") {
+            console.log("Found the following verb: " + result.toLowerCase());
+            verb.push(result.toLowerCase());
+        }
+        let impact = results[i][3];
+        if (typeof impact !== "undefined") {
+            console.log("Found the following verb: " + impact.toLowerCase());
+            verb.push(impact.toLowerCase());
+        }
+    }
+
+    console.log("Finished verb list: " + verb);
+    return (verb);
 
 }
 
@@ -25,12 +55,12 @@ function applyHighlights(text) {
     arrayLines = text.split('\n')
     console.log("Split into: " + arrayLines);
     for (i = 0; i < arrayLines.length; i++) {
-         console.log(arrayLines[i]);
+        console.log(arrayLines[i]);
         var len = arrayLines[i].length;
         if (arrayLines[i] == '') {
             console.log("Found blank line")
         }
-        else if (len > 114) {
+        else if (len > 115) {
             console.log(arrayLines[i] + " is too long, it is this many characters: " + arrayLines[i].length);
             text = text.replace(arrayLines[i], '<span>$&</span>');
         }
@@ -42,6 +72,22 @@ function applyHighlights(text) {
     text = text
         .replace(/\n$/g, '\n\n')
         .replace(/[A-Z]{2,}/g, '<mark>$&</mark>');
+
+    // Check for duplicate versb
+    let dupeVerbs = repeatingWords(text);
+    console.log("Array of verbs: " + dupeVerbs);
+    for (n = 0; n < dupeVerbs.length; n++) {
+        count = 0;
+        const dupeRegex = new RegExp(dupeVerbs[n], 'gi');
+        console.log("Searching for verb: " + dupeVerbs[n])
+        while (dupeRegex.exec(text) !== null) {
+            ++count;
+        }
+        if (count > 1) {
+            console.log("Found duplicate verb: " + dupeVerbs[n])
+            text = text.replace(dupeRegex, '<data>$&</data>');
+        }
+    }
 
     if (isIE) {
         // IE wraps whitespace differently in a div vs textarea, this fixes it
@@ -101,6 +147,7 @@ function cleanUnicode() {
 function handleInput() {
     warningReset();
     checkUnicode();
+    // repeatingWords();
     var text = $textarea.val();
     var highlightedText = applyHighlights(text);
     $highlights.html(highlightedText);
