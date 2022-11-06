@@ -13,6 +13,7 @@ body {
     background-color: #f0f0f0;
     font-family: 'Roboto Mono', monospace;
     color: #444;
+    max-width: 1200px;
 }
 
 .header,
@@ -23,6 +24,10 @@ a:visited {
     margin: 2em 4em;
     gap: 3em;
     text-transform: uppercase;
+}
+
+.header {
+    min-width: 700px;
 }
 
 a:link,
@@ -94,6 +99,13 @@ textarea {
     font-size: 1.4em;
 }
 
+.instructions-thesaurus {
+    display: flex;
+    justify-content: space-around;
+    min-width: 700px;
+    gap: 2em;
+}
+
 li {
     list-style: none;
 }
@@ -138,7 +150,7 @@ data {
 
 button {
     display: block;
-    width: 30em;
+    width: auto;
     margin: 3em auto 0;
     padding: 1em;
     border: none;
@@ -149,6 +161,13 @@ button {
     letter-spacing: 1px;
     appearance: none;
     cursor: pointer;
+    text-align: center;
+}
+
+.btn-thesaurus {
+    display: block;
+    padding: 0.5em 1em;
+    margin: 1em 0;
 }
 
 textarea:focus,
