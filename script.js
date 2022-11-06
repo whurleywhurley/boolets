@@ -183,53 +183,71 @@ if (isIOS) {
 bindEvents();
 handleInput();
 
-// Thesaurus implementation
-let searchInput = document.querySelector("input");
-let searchButton = document.querySelector("button");
-let display = document.querySelector(".display ol");
 
+// Grab right click from mouse
+oncontextmenu = (e) => {
+    e.preventDefault();
+    var menu = document.createElement("div");
+    menu.id = "contextMenu";
+    menu.style = `top:${e.pageY - 10}px;left:${e.pageX - 40}px`;
+    document.body.appendChild(menu);
+    menu.onmouseleave = () => contextMenu.outerHTML = '';
+    // Let's grab what text we have selected
+    var selectedText = selecttext(e);
+    // Now let's get the list of synonyms from Datamuse
+    var searchResults = thesaurussearch(selectedText);
+}
+
+function selecttext() {
+    var textarea = document.getElementById("data");
+    var selection = (textarea.value).substring(textarea.selectionStart, textarea.selectionEnd);
+    return selection;
+}
+
+
+// Thesaurus implementation
 let apiKey = "https://api.datamuse.com/words?ml=";
 
-searchButton.addEventListener("click", (event) => {
-  event.preventDefault();
+function thesaurussearch(query) {
+    // let's search for our input word
+    let endpoint = apiKey + query;
 
-  let endpoint = apiKey + searchInput.value;
+    // handle response
+    const xhr = new XMLHttpRequest();
+    var finalResults = [];
+    xhr.responseType = "json";
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            renderResponse(xhr.response);
+        }
+    };
 
-  // clear previous session
-  while (display.firstChild) {
-    display.removeChild(display.firstChild);
-    searchInput.value = "";
-  }
-
-  // handle response
-  const xhr = new XMLHttpRequest();
-  xhr.responseType = "json";
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      renderResponse(xhr.response);
-    }
-  };
-
-  xhr.open("GET", endpoint);
-  xhr.send();
-});
+    xhr.open("GET", endpoint);
+    xhr.send();
+};
 
 let renderResponse = (res) => {
-  if (!res) {
-    console.log(res.status);
-  }
+    var menu = document.getElementById('contextMenu');
 
-  if (!res.length) {
-    display.innerHTML = "No matching words found!";
-    display.style.overflowY = "";
+    if (!res) {
+        console.log(res.status);
+        thesarusWords = ['An error occured']
+    }
+
+    if (!res.length) {
+        menu.innerHTML = "No matching words found!";
+        menu.style.overflowY = "";
+        return;
+    }
+
+    if (res.length >= 5) {
+        menu.style.overflowY = "scroll";
+        menu.style.height = "200px";
+    }
+
+    for (let foundWords of res) {
+        menu.innerHTML += `<p>${foundWords.word}</p>`;
+    }
+    menu.onmouseleave = () => contextMenu.outerHTML = '';
     return;
-  }
-
-  if (res.length >= 5) {
-    display.style.overflowY = "scroll";
-    display.style.height = "200px";
-  }
-  for (let foundWords of res) {
-    display.innerHTML += `<li>${foundWords.word}</li>`;
-  }
 };

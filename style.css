@@ -179,3 +179,22 @@ button:focus {
 footer {
     margin-top: 3em;
 }
+
+/* Thesaurus styling */
+#contextMenu {
+    position: fixed;
+    background: #74637f;
+    color: white;
+    cursor: pointer;
+    border: 1px black solid
+}
+
+#contextMenu>p {
+    padding: 0 1rem;
+    margin: 0
+}
+
+#contextMenu>p:hover {
+    background: #e67e22;
+    color: white;
+}
