@@ -3,8 +3,6 @@
 <!-- 
     Next steps:
     Create functionality for abbreviations
-    Create functionality for thesaurus
-    Could I use this? https://www.delftstack.com/howto/javascript/javascript-right-click-menu/
  -->
 
 <head>
@@ -27,7 +25,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <meta http-equiv="Content-Security-Policy" content="script-src 'none'">
     <link rel="icon" type="image/png" href="icon.png" />
     <title>Boolets &mdash; Mo Betta</title>
 </head>
@@ -68,26 +65,18 @@
                 <h2>Instructions:</h2>
                 <ul>
                     <li>Place your bullets in the text box above</li>
-                    <li>If your bullets are longer than 115 characters, they will highlight in
-                        red <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
-                    <li>If your bullets are shorter than 112 characters, they will highlight in
-                        green <object>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</object></li>
+                    <li>If your bullets are longer than 115 characters, they will highlight in red <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+                    <li>If your bullets are shorter than 112 characters, they will highlight in green <object>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</object></li>
                     <li>Bullets between 112 and 115 characters are left alone</li>
-                    <li>Items highlighted in yellow <data>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</data> are where I think
-                        there
-                        might
-                        be duplicate verbs</li>
+                    <li>Items highlighted in yellow <data>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</data> are where I think there might be duplicate verbs</li>
                     <li>Acronyms appear in blue <mark>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</mark></li>
-                    <li>If you have entered unicode characters (thin spaces) it will warn you and attempt to fix this
-                        for
-                        you
-                    </li>
+                    <li>If you have entered unicode characters (thin spaces) it will warn you and attempt to fix this for you</li>
+                    <li>Highlight a word and right click to bring up a thesaurus. If you select a word, it will replace it in the text for you</li>
                 </ul>
                 <br>
                 <h3>Roadmap: (hopefully)</h3>
                 <ul>
                     <li>Abbreviations</li>
-                    <li>Thesaurus</li>
                 </ul>
             </div>
             <div class="thesaurus">
@@ -105,9 +94,7 @@
     <footer>
         <hr>
         <p>
-            Copyright &copy;
-            <script>document.write(new Date().getFullYear())</script> <a
-                href="https://github.com/whurleywhurley">William Hurley</a> All Rights Reserved
+            Copyright &copy;<script>document.write(new Date().getFullYear())</script> <a href="https://github.com/whurleywhurley">William Hurley</a> All Rights Reserved
         </p>
         <p>
             Thesaurus provided by <a href="https://www.datamuse.com/">Datamuse</a>

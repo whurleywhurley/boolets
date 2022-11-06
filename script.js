@@ -184,6 +184,7 @@ bindEvents();
 handleInput();
 
 
+
 // Grab right click from mouse
 oncontextmenu = (e) => {
     e.preventDefault();
@@ -192,6 +193,7 @@ oncontextmenu = (e) => {
     menu.style = `top:${e.pageY - 10}px;left:${e.pageX - 40}px`;
     document.body.appendChild(menu);
     menu.onmouseleave = () => contextMenu.outerHTML = '';
+    menu.onclick = () => contextMenu.outerHTML = '';
     // Let's grab what text we have selected
     var selectedText = selecttext(e);
     // Now let's get the list of synonyms from Datamuse
@@ -204,6 +206,20 @@ function selecttext() {
     return selection;
 }
 
+function replaceText(replacement) {
+    var textarea = document.getElementById("data");
+
+    // let's see if this works?
+    var start = textarea.selectionStart;
+    var end = textarea.selectionEnd;
+
+    var selectedText = textarea.value.slice(start, end);
+    var before = textarea.value.slice(0, start);
+    var after = textarea.value.slice(end);
+
+    var text = before + replacement + after;
+    textarea.value = text;
+}
 
 // Thesaurus implementation
 let apiKey = "https://api.datamuse.com/words?ml=";
@@ -246,8 +262,7 @@ let renderResponse = (res) => {
     }
 
     for (let foundWords of res) {
-        menu.innerHTML += `<p>${foundWords.word}</p>`;
+        menu.innerHTML += `<p onclick="replaceText('${foundWords.word}')">${foundWords.word}</p>`;
     }
-    menu.onmouseleave = () => contextMenu.outerHTML = '';
     return;
 };
