@@ -13,10 +13,13 @@ Most other tools aren't working for the new format that is in myEval. And, to be
 
 ### Other known tools:
 [AF Bullet Shaping Tool](https://af-vcd.github.io/pdf-bullets/)
+
 [AF Bullet Shaping Tool - Alternate Link](https://afbs.airforcehub.com/)
+
 [AF Bullet Shaping Tool - Alternate Link](https://www.lightningwithinfive.com/AFBS)
 
 [Bullet Time](https://smpentecost.github.io/BulletTime/)
+
 [Bullet Time- Alternate Link](https://www.lightningwithinfive.com/BulletTime/)
 
 [Bullet-Blender](https://github.com/Jukari2003/Bullet-Blender)
