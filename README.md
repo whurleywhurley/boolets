@@ -18,12 +18,19 @@ Most other tools aren't working for the new format that is in myEval. And, to be
 
 [AF Bullet Shaping Tool - Alternate Link](https://www.lightningwithinfive.com/AFBS)
 
+
 [Bullet Time](https://smpentecost.github.io/BulletTime/)
 
 [Bullet Time- Alternate Link](https://www.lightningwithinfive.com/BulletTime/)
 
+
 [Bullet-Blender](https://github.com/Jukari2003/Bullet-Blender)
+
 
 [Bullet Buddy](https://af-tools.github.io/bullet-buddy/)
 
+
 [Thin Space &rarr; myEval converter](https://regex101.com/r/vYFxZW/1)
+
+## Credits
+Thesaurus provided by [Datamuse](https://www.datamuse.com/)

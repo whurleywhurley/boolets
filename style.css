@@ -17,8 +17,8 @@ body {
 }
 
 .header,
-a:link,
-a:visited {
+a.about:link,
+a.about:visited {
     display: flex;
     justify-content: space-between;
     margin: 2em 4em;
@@ -30,8 +30,8 @@ a:visited {
     min-width: 700px;
 }
 
-a:link,
-a:visited {
+a.about:link,
+a.about:visited {
     background-color: #e67e22;
     padding: 0.5em;
     border-radius: 9px;
@@ -42,8 +42,8 @@ a:visited {
     transition: background-color 0.3s;
 }
 
-a:hover,
-a:active {
+a.about:hover,
+a.about:active {
     background-color: #cf711f;
 }
 
@@ -174,4 +174,8 @@ textarea:focus,
 button:focus {
     outline: none;
     box-shadow: 0 0 0 2px #c6aada;
+}
+
+footer {
+    margin-top: 3em;
 }
