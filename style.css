@@ -60,7 +60,7 @@ textarea {
 
 .highlights,
 textarea {
-    padding: 1em;
+    padding: 0.5em;
     font: 1.0em/1.2em 'Roboto Mono', monospace;
     letter-spacing: 1px;
 }
@@ -120,6 +120,7 @@ textarea {
     color: #444;
     background-color: transparent;
     overflow: auto;
+    overflow-y: scroll;
     resize: none;
     transition: transform 1s;
 }

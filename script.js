@@ -219,6 +219,7 @@ function replaceText(replacement) {
 
     var text = before + replacement + after;
     textarea.value = text;
+    handleInput();
 }
 
 // Thesaurus implementation
