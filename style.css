@@ -14,6 +14,7 @@ body {
     font-family: 'Roboto Mono', monospace;
     color: #444;
     max-width: 1200px;
+    overflow-x: scroll;
 }
 
 .header,
@@ -21,13 +22,41 @@ a.about:link,
 a.about:visited {
     display: flex;
     justify-content: space-between;
-    margin: 2em 4em;
+    margin: 2em 2em 2em 4em;
     gap: 3em;
     text-transform: uppercase;
+    /* text-align: center; */
 }
 
 .header {
     min-width: 700px;
+}
+
+label {
+    display: inline-block;
+}
+
+.preferences {
+    /* align-items: center; */
+    padding: 2em 4em;
+}
+
+.preferences form .input {
+    display: inline;
+    max-width: 4em;
+}
+
+.reset-btn {
+    width: 8em;
+}
+
+.abbreviations:link,
+.abbreviations:visited {
+    display: inline-block;
+    text-decoration: none;
+    background-color: tomato;
+    color: black;
+    padding: 0.1em;
 }
 
 a.about:link,
@@ -40,6 +69,10 @@ a.about:visited {
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s;
+    text-align: center;
+    align-items: center;
+    min-height: 4em;
+    max-height: 6em;
 }
 
 a.about:hover,
@@ -49,13 +82,13 @@ a.about:active {
 
 .container,
 .backdrop,
-textarea {
+.textarea {
     width: 80em;
     height: 20em;
 }
 
 .instructions {
-    margin: 0.5em 2em;
+    margin: 2em;
 }
 
 .highlights,
@@ -106,11 +139,15 @@ textarea {
     gap: 2em;
 }
 
+/* .thesaurus {
+    min-width: 200px;
+} */
+
 li {
     list-style: none;
 }
 
-textarea {
+.textarea {
     display: block;
     position: absolute;
     z-index: 2;
@@ -175,6 +212,22 @@ textarea:focus,
 button:focus {
     outline: none;
     box-shadow: 0 0 0 2px #c6aada;
+}
+
+.abbrs {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.abbrs-stuff {
+    margin-left: 4em;
+}
+
+.abbrsarea {
+    display: flex;
+    width: 80%;
+    height: 20em;
+    resize: none;
 }
 
 footer {

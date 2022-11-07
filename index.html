@@ -31,12 +31,29 @@
 
 <body>
     <header class="header">
-        <h1 class="title">
-            Boolets
-        </h1>
-        <p class="slug"><br>
-            Making bullets suck a little bit less
-        </p>
+        <div class="top">
+            <h1 class="title">
+                Boolets
+            </h1>
+            <p class="slug"><br>
+                Making bullets suck less
+            </p>
+        </div>
+        <div class="preferences">
+            <form>
+                <input type="reset" value="reset" class="reset-btn">
+                <br>
+                <label for="minimum" class="minimum input">Minimum characters</label>
+                <input type="number" name="minimum" id="minimum" class="input" value="112">
+                <br>
+                <label for="maximum" class="maximum input">Maximum characters</label>
+                <input type="number" name="maximum" id="maximum" class="input" value="115">
+                <br>
+                <label for="abbreviations">Abbreviations</label>
+                <input type="button" class="abbreviations" id="abbreviations" value="disabled"
+                    style="background-color: tomato" onclick="toggleAbbrs()">
+            </form>
+        </div>
         <a href="https://github.com/whurleywhurley" class="about">
             By William Hurley
         </a>
@@ -50,7 +67,7 @@
 
             </div>
         </div>
-        <textarea id="data">Input boolets here.</textarea>
+        <textarea id="data" class="textarea">Input boolets here.</textarea>
     </div>
     <br>
     <div class="instructions">
@@ -65,19 +82,24 @@
                 <h2>Instructions:</h2>
                 <ul>
                     <li>Place your bullets in the text box above</li>
-                    <li>If your bullets are longer than 115 characters, they will highlight in red <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
-                    <li>If your bullets are shorter than 112 characters, they will highlight in green <object>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</object></li>
-                    <li>Bullets between 112 and 115 characters are left alone</li>
-                    <li>Items highlighted in yellow <data>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</data> are where I think there might be duplicate verbs</li>
+                    <li>Set your desired lengths above the text box</li>
+                    <li>If your bullets too long, they will highlight in red
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </li>
+                    <li>If your bullets too short, they will highlight in green
+                        <object>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</object>
+                    </li>
+                    <li>Bullets that are between your minimum and maximum are left alone</li>
+                    <li>Items highlighted in yellow <data>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</data> might be duplicate
+                        verbs</li>
                     <li>Acronyms appear in blue <mark>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</mark></li>
-                    <li>If you have entered unicode characters (thin spaces) it will warn you and attempt to fix this for you</li>
-                    <li>Highlight a word and right click to bring up a thesaurus. If you select a word, it will replace it in the text for you</li>
-                    <li>If you are wanting to use right click like you normally do, hold <kbd>CTRL</kbd> while you right click</li>
-                </ul>
-                <br>
-                <h3>Roadmap: (hopefully)</h3>
-                <ul>
-                    <li>Abbreviations</li>
+                    <li>&nbsp;</li>
+                    <li>If you have entered unicode characters (thin spaces) it will warn you</li>
+                    <li>&nbsp;</li>
+                    <li>Highlight a word and right click to bring up a thesaurus. If you select a word, it will replace
+                        it in the text for you</li>
+                    <li>If you are wanting to use right click like you normally do, hold <kbd>CTRL</kbd> while you right
+                        click</li>
                 </ul>
             </div>
             <div class="thesaurus">
@@ -92,10 +114,40 @@
             </div>
         </div>
     </div>
+    <div class="abbrs" id="abbr-table">
+        <div class="abbrs-instructions">
+            <h2>Abbreviations *experimental*</h2>
+            <ul>
+                <li><strong>Formatting matters here. See example to the right</strong></li>
+                <li>Your abbreviatios must be in the following format:</li>
+                <li>No headings</li>
+                <li>Longform words on the left, shorthand words on the right</li>
+                <li>Alphabetized; it will replace words from top-to-bottom in the list</li>
+                <li><strong>It will replace ALL of the letters in your abbreviation list, it does not know to skip
+                        anything</strong></li>
+                <li>The text you paste may be not be in the pretty columns like you copied it, that's okay</li>
+                <li><strong>This functionality is experimental, and may have undesired results. Use at your own
+                        risk</strong></li>
+                <li>&nbsp;</li>
+                <li>When/if you're ready, paste your abbreviations from Excel into the text area below and click Save
+                    Abbreviations</li>
+                    <li>&nbsp;</li>
+            </ul>
+        </div>
+        <div></div>
+        <div class="abbrs-stuff">
+            <input type="button" value="Save Abbreviations" onclick="editAbbrs()">
+            <br>
+            <textarea name="abbrsarea" id="abbrsarea" class="abbrsarea"></textarea>
+        </div>
+        <img src="abbrs-min.png" alt="Abbreviations example">
+    </div>
     <footer>
         <hr>
         <p>
-            Copyright &copy;<script>document.write(new Date().getFullYear())</script> <a href="https://github.com/whurleywhurley">William Hurley</a> All Rights Reserved
+            Copyright &copy;
+            <script>document.write(new Date().getFullYear())</script> <a
+                href="https://github.com/whurleywhurley">William Hurley</a> All Rights Reserved
         </p>
         <p>
             Thesaurus provided by <a href="https://www.datamuse.com/">Datamuse</a>

@@ -5,6 +5,7 @@ var $clean = $('.clean');
 var $warning = $('#warning-area');
 var $textarea = $('textarea');
 var $toggle = $('button');
+var $abbrsarea = $('.abbrsarea');
 
 // yeah, browser sniffing sucks, but there are browser-specific quirks to handle that are not a matter of feature detection
 var ua = window.navigator.userAgent.toLowerCase();
@@ -20,32 +21,30 @@ function warningReset() {
 }
 
 function repeatingWords(inputText) {
-    // Working here
-    // var inputText = $textarea.val();
     let dateRegexp = /-\s(?<first>\w+)|\;\s(?<second>\w+)|\-\-(?<third>\w+)/gi;
     let results = inputText.matchAll(dateRegexp);
     results = Array.from(results)
     verb = [];
-    console.log("Result groups: " + results);
+    // console.log("Result groups: " + results);
     for (i = 0; i < results.length; i++) {
         let action = results[i][1];
         if (typeof action !== "undefined") {
-            console.log("Found the following verb: " + action.toLowerCase());
+            // console.log("Found the following verb: " + action.toLowerCase());
             verb.push(action.toLowerCase());
         }
         let result = results[i][2];
         if (typeof result !== "undefined") {
-            console.log("Found the following verb: " + result.toLowerCase());
+            // console.log("Found the following verb: " + result.toLowerCase());
             verb.push(result.toLowerCase());
         }
         let impact = results[i][3];
         if (typeof impact !== "undefined") {
-            console.log("Found the following verb: " + impact.toLowerCase());
+            // console.log("Found the following verb: " + impact.toLowerCase());
             verb.push(impact.toLowerCase());
         }
     }
 
-    console.log("Finished verb list: " + verb);
+    // console.log("Finished verb list: " + verb);
     return (verb);
 
 }
@@ -53,19 +52,24 @@ function repeatingWords(inputText) {
 function applyHighlights(text) {
     // This splits the text into an array, iterates through to check each item for length, and mark with span if over 114 characters and with object if shorter than 112.
     arrayLines = text.split('\n')
-    console.log("Split into: " + arrayLines);
+    // console.log("Split into: " + arrayLines);
     for (i = 0; i < arrayLines.length; i++) {
-        console.log(arrayLines[i]);
+        // let's get the settings from the user
+        var minWidthEl = document.getElementById('minimum').value;
+        // console.log("The minimum width value is: " + minWidthEl);
+        var maxWidthEl = document.getElementById('maximum').value;
+        // console.log("The maximum width value is: " + maxWidthEl);
+        // console.log(arrayLines[i]);
         var len = arrayLines[i].length;
         if (arrayLines[i] == '') {
-            console.log("Found blank line")
+            // console.log("Found blank line")
         }
         else if (len > 115) {
-            console.log(arrayLines[i] + " is too long, it is this many characters: " + arrayLines[i].length);
+            // console.log(arrayLines[i] + " is too long, it is this many characters: " + arrayLines[i].length);
             text = text.replace(arrayLines[i], '<span>$&</span>');
         }
         else if (len < 112) {
-            console.log(arrayLines[i] + " is too short, it is this many characters: " + arrayLines[i].length);
+            // console.log(arrayLines[i] + " is too short, it is this many characters: " + arrayLines[i].length);
             text = text.replace(arrayLines[i], '<object>$&</object>');
         }
     }
@@ -75,16 +79,16 @@ function applyHighlights(text) {
 
     // Check for duplicate versb
     let dupeVerbs = repeatingWords(text);
-    console.log("Array of verbs: " + dupeVerbs);
+    // console.log("Array of verbs: " + dupeVerbs);
     for (n = 0; n < dupeVerbs.length; n++) {
         count = 0;
         const dupeRegex = new RegExp(dupeVerbs[n], 'gi');
-        console.log("Searching for verb: " + dupeVerbs[n])
+        // console.log("Searching for verb: " + dupeVerbs[n])
         while (dupeRegex.exec(text) !== null) {
             ++count;
         }
         if (count > 1) {
-            console.log("Found duplicate verb: " + dupeVerbs[n])
+            // console.log("Found duplicate verb: " + dupeVerbs[n])
             text = text.replace(dupeRegex, '<data>$&</data>');
         }
     }
@@ -103,17 +107,17 @@ function checkUnicode() {
 
     unicodeCheck = false;
     for (n = 0; n < unicodeSpace.length; n++) {
-        console.log("Checking for: " + unicodeSpace[n]);
+        // console.log("Checking for: " + unicodeSpace[n]);
         if (brokenText.search(unicodeSpace[n]) != -1) {
-            console.log("Found the following unicode: " + unicodeSpace[n]);
+            // console.log("Found the following unicode: " + unicodeSpace[n]);
             unicodeCheck = true;
         }
         else { }
     }
     for (n = 0; n < unicodeHyphen.length; n++) {
-        console.log("Checking for: " + unicodeHyphen[n]);
+        // console.log("Checking for: " + unicodeHyphen[n]);
         if (brokenText.search(unicodeHyphen[n]) != -1) {
-            console.log("Found the following unicode: " + unicodeHyphen[n]);
+            // console.log("Found the following unicode: " + unicodeHyphen[n]);
             unicodeCheck = true;
         }
         else { }
@@ -149,6 +153,7 @@ function handleInput() {
     checkUnicode();
     // repeatingWords();
     var text = $textarea.val();
+    text = runAbbrs(text);
     var highlightedText = applyHighlights(text);
     $highlights.html(highlightedText);
 }
@@ -183,6 +188,91 @@ if (isIOS) {
 bindEvents();
 handleInput();
 
+
+// Abbreviations
+
+var abbrs = [];
+
+function toggleAbbrs() {
+    var button = document.getElementById('abbreviations');
+    if (button.value == "enabled") {
+        button.value = "disabled";
+        button.style.backgroundColor = "tomato";
+        return;
+    };
+    if (button.value == "disabled") {
+        button.value = "enabled";
+        button.style.backgroundColor = "green";
+        handleInput();
+    };
+}
+
+function runAbbrs(text) {
+    var button = document.getElementById('abbreviations');
+    if (button.value == "disabled") {
+        return text;
+    }
+    else {
+        // do all the swaps
+        for (let key in abbrs) {
+            var abbrsKey = abbrs[key]['long'];
+            var abbrsRegex = new RegExp(abbrsKey, 'g');
+            var abbrsReplacement = abbrs[key]['short'];
+            // need to do data validation because copy/paste introduces newlines
+            if (abbrsKey !== "" && abbrsReplacement !== "undefined") {
+                // console.log(abbrsRegex);
+                // console.log(abbrsReplacement);
+                // let's replace the text with the abbreviation in the textarea
+                var textarea = document.getElementById("data");
+                const indexPairs = [];
+                while (null !== (matchArr = abbrsRegex.exec(text))) {
+                    indexPairs.push([matchArr.index, abbrsRegex.lastIndex]);
+                }
+                // console.log(indexPairs);
+                for (i = 0; i < indexPairs.length; i++) {
+                    var start = indexPairs[i][0];
+                    var end = indexPairs[i][1];
+                    var selectedText = textarea.value.slice(start, end);
+                    var before = textarea.value.slice(0, start);
+                    var after = textarea.value.slice(end);
+
+                    var text = before + abbrsReplacement + after;
+                    textarea.value = text;
+                }
+                // let's replace the text with the abbreviation in the highlighting
+                text = text.replace(abbrsRegex, abbrsReplacement);
+            }
+        }
+        return text;
+    }
+}
+
+// grab text from abbrsarea textarea and create them into an array we can use
+// array gets blanked at the beginning and saved as abbrs
+function editAbbrs() {
+    // console.log("Starting loop");
+    var inputText = $abbrsarea.val();
+    // console.log("Input text: " + inputText);
+    var objects = [];
+    //split into rows
+    var rows = inputText.split('\n');
+
+    //Make column
+    columns = ['long', 'short'];
+    // console.log(columns);
+
+    for (var rowNr = 0; rowNr < rows.length; rowNr++) {
+        var o = {};
+        var data = rows[rowNr].split('\t');
+        for (var cellNr = 0; cellNr < data.length; cellNr++) {
+            o[columns[cellNr]] = data[cellNr];
+        }
+
+        objects.push(o);
+    }
+    // console.log(objects);
+    abbrs = objects;
+}
 
 
 // Grab right click from mouse
@@ -253,7 +343,7 @@ let renderResponse = (res) => {
     var menu = document.getElementById('contextMenu');
 
     if (!res) {
-        console.log(res.status);
+        // console.log(res.status);
         thesarusWords = ['An error occured']
     }
 
