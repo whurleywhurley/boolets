@@ -120,7 +120,7 @@ textarea {
     color: #444;
     background-color: transparent;
     overflow: auto;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     resize: none;
     transition: transform 1s;
 }

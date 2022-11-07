@@ -187,17 +187,23 @@ handleInput();
 
 // Grab right click from mouse
 oncontextmenu = (e) => {
-    e.preventDefault();
-    var menu = document.createElement("div");
-    menu.id = "contextMenu";
-    menu.style = `top:${e.pageY - 10}px;left:${e.pageX - 40}px`;
-    document.body.appendChild(menu);
-    menu.onmouseleave = () => contextMenu.outerHTML = '';
-    menu.onclick = () => contextMenu.outerHTML = '';
-    // Let's grab what text we have selected
-    var selectedText = selecttext(e);
-    // Now let's get the list of synonyms from Datamuse
-    var searchResults = thesaurussearch(selectedText);
+    // don't run if ctrl key is pushed as well
+    if (e.ctrlKey) {
+        return;
+    }
+    else {
+        e.preventDefault();
+        var menu = document.createElement("div");
+        menu.id = "contextMenu";
+        menu.style = `top:${e.pageY - 10}px;left:${e.pageX - 40}px`;
+        document.body.appendChild(menu);
+        menu.onmouseleave = () => contextMenu.outerHTML = '';
+        menu.onclick = () => contextMenu.outerHTML = '';
+        // Let's grab what text we have selected
+        var selectedText = selecttext(e);
+        // Now let's get the list of synonyms from Datamuse
+        var searchResults = thesaurussearch(selectedText);
+    }
 }
 
 function selecttext() {
