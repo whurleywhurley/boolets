@@ -1,6 +1,21 @@
 # Boolets
 
-# [Use it now](https://whurleywhurley.github.io/boolets)
+# [Use it now: https://whurleywhurley.github.io/boolets](https://whurleywhurley.github.io/boolets)
+
+## Demo
+![Screenshot of webpage](/screenshot.png?raw=true)
+
+## How to use
+Instructions are on the website. Type or paste in bullets, and it'll highlight sections for you.
+
+Lines that are too long will highlight red, too short and they will be green.
+You can customize the length you want as too long/short.
+
+Acronyms are highlighted blue and output below the textbox for you.
+
+Potentially resued action/impact/result verbs are highlighted in yellow.
+
+There is an experimental abbreviations functionality, but it might be prone to errors. Use at your own risk, and be sure to follow the instructions!
 
 ## Why?
 Because writing bullets sucks, our system for bullets suck, and we are forced to make homemade tools to fix their shortcomings.
@@ -32,5 +47,7 @@ Most other tools aren't working for the new format that is in myEval. And, to be
 
 [Thin Space &rarr; myEval converter](https://regex101.com/r/vYFxZW/1)
 
-## Credits
+## Technology
+Built using spaghetti HTML and Javascript.
+
 Thesaurus provided by [Datamuse](https://www.datamuse.com/)

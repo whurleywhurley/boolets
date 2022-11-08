@@ -7,6 +7,8 @@ var $textarea = $('textarea');
 var $toggle = $('button');
 var $abbrsarea = $('.abbrsarea');
 
+var acronymArray = [];
+
 // yeah, browser sniffing sucks, but there are browser-specific quirks to handle that are not a matter of feature detection
 var ua = window.navigator.userAgent.toLowerCase();
 var isIE = !!ua.match(/msie|trident\/7|edge/);
@@ -100,6 +102,25 @@ function applyHighlights(text) {
     return text;
 }
 
+function acronymExtract() {
+    // reset our acronym array
+    acronymArray = [];
+    // add our identified acronyms to our array
+    var inputText = $textarea.val();
+
+    acronymList = inputText.matchAll(/[A-Z]{2,}/g);
+    acronymArray = Array.from(acronymList).sort();
+    var acronymReturnArea = document.getElementById('acronyms');
+
+    for (i=0; i < acronymArray.length; i++) {
+        // console.log(acronymArray[i][0]);
+        let foundAcronym = acronymArray[i][0];
+        acronymReturnArea.innerHTML += "(" + foundAcronym + "); ";
+
+    };
+
+}
+
 function checkUnicode() {
     var brokenText = $textarea.val();
     unicodeSpace = ["\u2000", "\u2001", "\u2002", "\u2003", "\u2004", "\u2005", "\u2006", "\u2007", "\u2008", "\u2009", "\u200A", "\u200B", "\u200C", "\u200D"];
@@ -156,6 +177,7 @@ function handleInput() {
     text = runAbbrs(text);
     var highlightedText = applyHighlights(text);
     $highlights.html(highlightedText);
+    acronymExtract();
 }
 
 function handleScroll() {
