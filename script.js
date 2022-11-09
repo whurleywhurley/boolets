@@ -110,15 +110,14 @@ function acronymExtract() {
 
     acronymList = inputText.matchAll(/[A-Z]{2,}/g);
     acronymArray = Array.from(acronymList).sort();
+    acronymArray = acronymArray.map(JSON.stringify).filter((e,i,a) => i === a.indexOf(e)).map(JSON.parse);
     var acronymReturnArea = document.getElementById('acronyms');
-
-    for (i=0; i < acronymArray.length; i++) {
+    acronymReturnArea.innerHTML = "Acronyms: ";
+    for (i = 0; i < acronymArray.length; i++) {
         // console.log(acronymArray[i][0]);
         let foundAcronym = acronymArray[i][0];
         acronymReturnArea.innerHTML += "(" + foundAcronym + "); ";
-
     };
-
 }
 
 function checkUnicode() {
