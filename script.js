@@ -416,3 +416,17 @@ let renderResponse = (res) => {
     }
     return;
 };
+
+// Dark mode
+function darkMode() {
+    var element = document.body;
+    element.classList.toggle("dark");
+    var bulletArea = document.getElementById('data');
+    bulletArea.classList.toggle("dark");
+    var abbrsArea = document.getElementById('abbrsarea');
+    abbrsArea.classList.toggle("dark");
+    var inputArea = document.getElementsByClassName('.input');
+    inputArea.classList.toggle("dark");
+    var imageArea = document.getElementsByClassName('.image');
+    imageArea.classList.toggle("dark");
+  }

@@ -29,7 +29,7 @@
     <title>Boolets &mdash; Mo Betta</title>
 </head>
 
-<body>
+<body class="">
     <header class="header">
         <div class="top">
             <h1 class="title">
@@ -41,7 +41,8 @@
         </div>
         <div class="preferences">
             <form>
-                <input type="reset" value="reset" class="reset-btn">
+                <input type="reset" value="RESET" class="reset-btn btn">
+                <input type="button" value="Light/Dark Mode" onclick="darkMode()" class="btn" id="dark-light">
                 <br>
                 <label for="minimum" class="minimum input">Minimum characters</label>
                 <input type="number" name="minimum" id="minimum" class="input" value="112">
@@ -52,11 +53,11 @@
                 <label for="abbreviations">Abbreviations</label>
                 <input type="button" class="abbreviations" id="abbreviations" value="disabled"
                     style="background-color: tomato" onclick="toggleAbbrs()">
-            </form>
+                </form>
         </div>
-        <a href="https://github.com/whurleywhurley" class="about">
-            By William Hurley
-        </a>
+            <a href="https://github.com/whurleywhurley" class="about">
+                By William Hurley
+            </a>
     </header>
     <noscript>
         You need to enable JavaScript to function properly.
@@ -109,7 +110,7 @@
             <div class="thesaurus">
                 <form action="">
                     <h2>Thesaurus</h2>
-                    <input type="text" name="word" placeholder="Enter a word">
+                    <input type="text" name="word" class="input" placeholder="Enter a word">
                     <button class="btn-thesaurus" type="submit">Search</button>
                 </form>
                 <div class="display">
@@ -142,17 +143,17 @@
         <div class="abbrs-stuff">
             <label for="abbrs">Load abbreviations:</label>
 
-            <select name="abbrs" id="abbrs-select" class="abbrs-select">
+            <select name="abbrs" id="abbrs-select" class="abbrs-select input">
                 <option value="custom" selected>Custom</option>
                 <option value="55-wg">55th Wing</option>
                 <!-- <option value="xx-unit">XX Unit</option> -->
             </select>
-            <input type="button" value="Load Abbreviations" onclick="editAbbrs()">
+            <input type="button" value="Load Abbreviations" onclick="editAbbrs()" class="btn">
             <br>
             <textarea name="abbrsarea" id="abbrsarea" class="abbrsarea"
                 placeholder="You may select a pre-built list, if available.&#10;&#10;If you have a list you'd like added (and is able to be publically released) please create an issue and provide the Excel document with the abbreviations.&#10;&#10;If your list is not available, use 'Custom' and paste your abbreviations from Excel into the text area below"></textarea>
         </div>
-        <img src="abbrs-min.png" alt="Abbreviations example">
+        <img src="abbrs-min.png" alt="Abbreviations example" class="image">
     </div>
     <footer>
         <hr>

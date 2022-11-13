@@ -50,6 +50,12 @@ label {
     width: 8em;
 }
 
+.btn {
+    font-family: inherit;
+    background-color: inherit;
+    color: inherit;
+}
+
 .abbreviations:link,
 .abbreviations:visited {
     display: inline-block;
@@ -251,4 +257,25 @@ footer {
 #contextMenu>p:hover {
     background: #e67e22;
     color: white;
+}
+
+/* Dark mode */
+.dark,
+.dark .input {
+    background-color: #444;
+    color: #aaa;
+}
+
+.dark .textarea {
+    background-color: rgba(0,0,0,0.2);
+    color: #444;
+}
+
+.dark #abbrsarea {
+    background-color: #aaa;
+    color: #444;
+}
+
+.dark img {
+    filter: brightness(70%);
 }
