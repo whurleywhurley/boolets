@@ -110,7 +110,7 @@ function acronymExtract() {
 
     acronymList = inputText.matchAll(/[A-Z]{2,}/g);
     acronymArray = Array.from(acronymList).sort();
-    acronymArray = acronymArray.map(JSON.stringify).filter((e,i,a) => i === a.indexOf(e)).map(JSON.parse);
+    acronymArray = acronymArray.map(JSON.stringify).filter((e, i, a) => i === a.indexOf(e)).map(JSON.parse);
     var acronymReturnArea = document.getElementById('acronyms');
     acronymReturnArea.innerHTML = "Acronyms: ";
     for (i = 0; i < acronymArray.length; i++) {
@@ -271,9 +271,41 @@ function runAbbrs(text) {
 // grab text from abbrsarea textarea and create them into an array we can use
 // array gets blanked at the beginning and saved as abbrs
 function editAbbrs() {
-    // console.log("Starting loop");
-    var inputText = $abbrsarea.val();
+    // console.log("Starting editAbbrs loop");
+    var abbrSelect = document.getElementById('abbrs-select').value;
+    // console.log("abbrs-select: " + abbrSelect);
+    var inputText;
+    if (abbrSelect == "custom") {
+        inputText = $abbrsarea.val();
+        processAbbrs(inputText);
+        return
+    }
+    else {
+        var abbrSelect = document.getElementById('abbrs-select').value;
+        var abbrsPath = 'abbrs/' + abbrSelect;
+        var abbrSelect = document.getElementById('abbrs-select').value;
+        var xmlhttp;
+        var inputText;
+        if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else { // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                inputText = xmlhttp.responseText;
+                // console.log(inputText);
+                processAbbrs(inputText);
+                return
+            }
+        }
+        xmlhttp.open("GET", abbrsPath, true);
+        xmlhttp.send();
+    }
     // console.log("Input text: " + inputText);
+}
+
+function processAbbrs(inputText) {
     var objects = [];
     //split into rows
     var rows = inputText.split('\n');

@@ -118,31 +118,39 @@
             </div>
         </div>
     </div>
+    <div class="abbrs-instructions">
+        <h2>Abbreviations *experimental*</h2>
+        <ul>
+            <li><strong>Formatting matters here. See example to the right</strong></li>
+            <li>Your abbreviations must be in the following format:</li>
+            <li>No headings</li>
+            <li>Longform words on the left, shorthand words on the right</li>
+            <li>Alphabetized; it will replace words from top-to-bottom in the list</li>
+            <li><strong>It will replace ALL of the letters in your abbreviation list, it does not know to skip
+                    anything</strong></li>
+            <li>The text you paste may be not be in the pretty columns like you copied it, that's okay</li>
+            <li><strong>This functionality is experimental, and may have undesired results. Use at your own
+                    risk</strong></li>
+            <li>&nbsp;</li>
+
+        </ul>
+    </div>
+    <div>
+
+    </div>
     <div class="abbrs" id="abbr-table">
-        <div class="abbrs-instructions">
-            <h2>Abbreviations *experimental*</h2>
-            <ul>
-                <li><strong>Formatting matters here. See example to the right</strong></li>
-                <li>Your abbreviatios must be in the following format:</li>
-                <li>No headings</li>
-                <li>Longform words on the left, shorthand words on the right</li>
-                <li>Alphabetized; it will replace words from top-to-bottom in the list</li>
-                <li><strong>It will replace ALL of the letters in your abbreviation list, it does not know to skip
-                        anything</strong></li>
-                <li>The text you paste may be not be in the pretty columns like you copied it, that's okay</li>
-                <li><strong>This functionality is experimental, and may have undesired results. Use at your own
-                        risk</strong></li>
-                <li>&nbsp;</li>
-                <li>When/if you're ready, paste your abbreviations from Excel into the text area below and click Save
-                    Abbreviations</li>
-                    <li>&nbsp;</li>
-            </ul>
-        </div>
-        <div></div>
         <div class="abbrs-stuff">
-            <input type="button" value="Save Abbreviations" onclick="editAbbrs()">
+            <label for="abbrs">Load abbreviations:</label>
+
+            <select name="abbrs" id="abbrs-select" class="abbrs-select">
+                <option value="custom" selected>Custom</option>
+                <option value="55-wg">55th Wing</option>
+                <!-- <option value="xx-unit">XX Unit</option> -->
+            </select>
+            <input type="button" value="Load Abbreviations" onclick="editAbbrs()">
             <br>
-            <textarea name="abbrsarea" id="abbrsarea" class="abbrsarea"></textarea>
+            <textarea name="abbrsarea" id="abbrsarea" class="abbrsarea"
+                placeholder="You may select a pre-built list, if available.&#10;&#10;If you have a list you'd like added (and is able to be publically released) please create an issue and provide the Excel document with the abbreviations.&#10;&#10;If your list is not available, use 'Custom' and paste your abbreviations from Excel into the text area below"></textarea>
         </div>
         <img src="abbrs-min.png" alt="Abbreviations example">
     </div>
