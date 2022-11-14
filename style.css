@@ -13,8 +13,12 @@ body {
     background-color: #f0f0f0;
     font-family: 'Roboto Mono', monospace;
     color: #444;
-    max-width: 1200px;
     overflow-x: scroll;
+}
+
+.content {
+    max-width: 1200px;
+    margin: auto;
 }
 
 .header,
@@ -94,7 +98,8 @@ a.about:active {
 }
 
 .instructions {
-    margin: 2em;
+    margin: 4em;
+    max-width: inherit;
 }
 
 .highlights,
@@ -140,7 +145,7 @@ textarea {
 
 .instructions-thesaurus {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     min-width: 700px;
     gap: 2em;
 }
