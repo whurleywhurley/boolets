@@ -3,7 +3,11 @@
 # [Use it now: https://whurleywhurley.github.io/boolets](https://whurleywhurley.github.io/boolets)
 
 ## Demo
-![Screenshot of webpage](/screenshot.png?raw=true)
+### Light
+![Screenshot of light webpage](/images/screenshot-light.png?raw=true)
+
+## Dark
+![Screenshot of dark webpage](/images/screenshot-dark.png?raw=true)
 
 ## How to use
 Instructions are on the website. Type or paste in bullets, and it'll highlight sections for you.
@@ -24,7 +28,7 @@ Because writing bullets sucks, our system for bullets suck, and we are forced to
 Because I wanted/dreamt of having a tool like this, and after some practice time with Javascript/HTML/CSS I got a bit cocky.
 
 ## How is this any different from [other tool]?
-Most other tools aren't working for the new format that is in myEval. And, to be honest, none of the functionality is brand new. There are other tools out there that have different/better functionality, ease of access, and look a lot prettier. If I was any good at coding, I would have made changes to their product to enhance it. Instead, I made this. If you've got the skills to take this code and integrate it elsewhere, please do! And let me know that you've done it.
+Most other tools aren't working for the new format that is in myEval. And, to be honest, none of the functionality is brand new. There are other tools out there that have different/better/same functionality, ease of access, and look a lot prettier. If I was any good at coding, I would have made changes to their product to enhance it. Instead, I made this. If you've got the skills to take this code and integrate it elsewhere, please do! And let me know that you've done it.
 
 ### Other known tools:
 [AF Bullet Shaping Tool](https://af-vcd.github.io/pdf-bullets/)
@@ -47,7 +51,22 @@ Most other tools aren't working for the new format that is in myEval. And, to be
 
 [Thin Space &rarr; myEval converter](https://regex101.com/r/vYFxZW/1)
 
+## Roadmap
+1. Optimize Javascript code
+2. Dynamic resizing of webpage
+3. Improve aesthetic
+
+## How to Contribute
+1. If you have pubically releasable abbreviations lists you'd like added, create an issue with the Excel sheets attached. Please follow the same format as is required for use in the tool.
+2. Pull requests will be reviewed as I am able. My Javascript is rudimentary at best, and I'm sure there are better ways of doing the same functionality.
+3. Did you find something that breaks the bullet text box? Please let me know in an issue!
+
 ## Technology
-Built using spaghetti HTML and Javascript.
+Built using spaghetti HTML, Javascript, and jQuery.
 
 Thesaurus provided by [Datamuse](https://www.datamuse.com/)
+
+## Thank You
+Thank you for using my product!
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/whurley)
